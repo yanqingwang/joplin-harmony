@@ -290,8 +290,11 @@ const EncryptionConfigScreen = (props: Props) => {
 			borderBottomColor: theme.dividerColor,
 		};
 
+		// passwordChecks['master'] is also true when no password has been set
+		// yet, so the stored password has to exist before hiding the input -
+		// otherwise the user has no way to enter the decryption password.
 		if (
-			passwordChecks['master'] ||
+			(passwordChecks['master'] && !!props.masterPassword) ||
 			allMasterPasswordKeysStoredInUnknownFormat(
 				Object.keys(masterPasswordKeys), props.masterKeys,
 			)

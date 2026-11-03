@@ -292,7 +292,7 @@ async function initialize(dispatch: Dispatch) {
 			try {
 				await task();
 			} catch (error) {
-				logger.error(`Startup failure during task: ${name}`);
+				logger.error(`Startup failure during task: ${name}`, (error as Error)?.stack);
 				throw error;
 			}
 		});
@@ -739,17 +739,23 @@ class AppComponent extends React.Component<AppComponentProps, AppComponentState>
 	public render() {
 		if (this.props.appState !== 'ready') {
 			if (this.props.appState === 'error') {
-				return <Text>Startup error.</Text>;
+				return <View style={{ flex: 1, padding: 20, backgroundColor: '#fff', justifyContent: 'center' }}>
+					<Text style={{ fontSize: 18, color: '#cc0000', fontWeight: 'bold' }}>Startup Error</Text>
+					<Text style={{ fontSize: 14, color: '#cc0000', marginTop: 10 }}>
+						{(globalThis as any).__joplinLastError || 'Unknown error'}
+					</Text>
+					<Text style={{ fontSize: 12, color: '#666', marginTop: 10 }}>
+						{(globalThis as any).__joplinErrors?.slice(-5).join('\n---\n') || ''}
+					</Text>
+				</View>;
 			}
 
-			// Loading can take a particularly long time for the first time on web -- show progress.
-			if (Platform.OS === 'web') {
-				return <View style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: 20 }}>
-					<ActivityIndicator accessibilityLabel={_('Loading...')} />
-				</View>;
-			} else {
-				return null;
-			}
+			return <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
+				<ActivityIndicator accessibilityLabel={_('Loading...')} size="large" color="#2196F3" />
+				<Text style={{ fontSize: 14, color: '#666', marginTop: 10 }}>
+					{this.props.appState === 'initializing' ? 'Initializing...' : 'Starting...'}
+				</Text>
+			</View>;
 		}
 		const theme: Theme = themeStyle(this.props.themeId);
 

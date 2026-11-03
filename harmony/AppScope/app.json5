@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "com.heartroad.joplin",
+    "vendor": "heartandroad",
+    "versionCode": 30700,
+    "versionName": "3.7.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+  }
+}

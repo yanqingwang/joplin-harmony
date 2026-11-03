@@ -73,7 +73,19 @@ docs/**/*.mustache
 
 packages/generator-joplin/generators/app/templates/script/publish/dist/
 
+# HarmonyOS build artifacts (kept locally, too large for git)
+/release/
+
 # AUTO-GENERATED - EXCLUDED TYPESCRIPT BUILD
+harmony-shell/App.js
+harmony-shell/harmony/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/PackageProvider.js
+harmony-shell/harmony/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/RNOHPackagesFactory.js
+harmony-shell/harmony/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/entryability/EntryAbility.js
+harmony-shell/harmony/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/pages/Index.js
+harmony-shell/harmony/entry/build/default/cache/default/default@CompileArkTS/esmodule/debug/entry/src/main/ets/workers/RNOHWorker.js
+harmony-shell/harmony/entry/build/default/generated/r/default/ResourceTable.js
+harmony-shell/harmony/entry/hvigorfile.js
+harmony-shell/harmony/hvigorfile.js
 packages/app-cli/app/LinkSelector.js
 packages/app-cli/app/ResourceServer.js
 packages/app-cli/app/app-gui.js

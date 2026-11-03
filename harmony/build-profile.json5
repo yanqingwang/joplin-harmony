@@ -1,0 +1,53 @@
+{
+  app: {
+    products: [
+      {
+        name: 'default',
+        signingConfig: 'default',
+        compatibleSdkVersion: '5.0.0(12)',
+        targetSdkVersion: '26.0.0',
+        runtimeOS: 'HarmonyOS',
+        buildOption: {
+          nativeCompiler: 'BiSheng'
+        }
+      }
+    ],
+    buildModeSet: [
+      {
+        name: 'debug'
+      },
+      {
+        name: 'release'
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/ross/Documents/WK/code/joplin-harmony/harmony/sign/release/joplin_test.cer",
+          "keyAlias": "joplin_release",
+          "keyPassword": "00000030A7A55E25CA61FD759D51D7A67063F23E02A5861B6034F9717F7C7720E5B6E6691EBC1604F961809DD16B5BB7792DC6ED10F6A097659766562BF7CFC8",
+          "profile": "/Users/ross/Documents/WK/code/joplin-harmony/harmony/sign/release/joplin_testDebug.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/ross/Documents/WK/code/joplin-harmony/harmony/sign/release/joplin_release.p12",
+          "storePassword": "00000030F18C9175350FCAC7B85A710457FF43F5351DB6E2CBFDD9AB92EE3C81309F2C3B8AA729C58C889A40D0E1C581C58E27EA5BADDAAB278225011D341DDF"
+        }
+      }
+    ]
+  },
+  modules: [
+    {
+      name: 'entry',
+      srcPath: './entry',
+      targets: [
+        {
+          name: 'default',
+          applyToProducts: [
+            'default'
+          ],
+        },
+      ],
+    },
+  ],
+}

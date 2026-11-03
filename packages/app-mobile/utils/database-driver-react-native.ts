@@ -13,6 +13,8 @@ const getDatabaseDirectory = async () => {
 		databaseDirectory = `${RNFS.LibraryDirectoryPath}/LocalDatabase/`;
 	} else if (Platform.OS === 'android') {
 		databaseDirectory = NativeModules.SystemInformationPackage?.getConstants()?.databaseDirectory;
+	} else {
+		databaseDirectory = `${RNFS.DocumentDirectoryPath}/LocalDatabase/`;
 	}
 	if (!databaseDirectory) throw new Error('Unable to determine database path.');
 

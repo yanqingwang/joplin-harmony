@@ -1,0 +1,37 @@
+{
+  "name": "joplin-harmony-shell",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Joplin HarmonyOS (RNOH 0.86.1) P0 shell",
+  "harmony": {
+    "codegenConfig": {
+      "specPaths": [
+        "./specs"
+      ]
+    }
+  },
+  "scripts": {
+    "start": "react-native start --host 127.0.0.1",
+    "bundle": "react-native bundle-harmony --dev false --entry-file index.js",
+    "harmony": "react-native run-harmony --no-packager",
+    "check": "node -e \"console.log(require('react-native/package.json').version)\""
+  },
+  "dependencies": {
+    "@react-native-oh-tpl/react-native-webview": "^13.10.3",
+    "@react-native-oh/react-native-harmony": "0.86.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "20.1.0",
+    "@react-native-oh/react-native-harmony-cli": "0.86.1",
+    "@react-native/babel-preset": "0.86.3",
+    "@react-native/metro-config": "0.86.3"
+  },
+  "engines": {
+    "node": ">=22.19"
+  }
+}
