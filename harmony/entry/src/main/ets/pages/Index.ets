@@ -22,6 +22,16 @@ import { getRNOHPackages } from '../PackageProvider';
 struct Index {
   @StorageLink('RNOHCoreContext') private rnohCoreContext: RNOHCoreContext | undefined = undefined;
 
+  // Consuming back here (page level) is the only way to keep the ability in the
+  // foreground: UIAbility.onBackPressed cannot consume the event, it only decides
+  // destroy-vs-background. The RN side decides what back means (close menu,
+  // NAV_BACK, exit); when nothing is left Joplin calls BackHandler.exitApp(),
+  // which lands in EntryAbility.defaultBackPressHandler.
+  onBackPress(): boolean | void {
+    this.rnohCoreContext?.dispatchBackPress();
+    return true;
+  }
+
   build() {
     Column() {
       if (this.rnohCoreContext) {

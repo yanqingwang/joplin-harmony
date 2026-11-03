@@ -16,6 +16,7 @@ import {
 import { JoplinSQLiteModule } from './JoplinSQLiteModule';
 import { JoplinFileSystemModule } from './JoplinFileSystemModule';
 import { JoplinCryptoModule } from './JoplinCryptoModule';
+import { JoplinI18nModule } from './JoplinI18nModule';
 
 class JoplinTurboModulesFactory extends AnyThreadTurboModuleFactory {
   public createTurboModule(name: string): AnyThreadTurboModule | null {
@@ -28,11 +29,14 @@ class JoplinTurboModulesFactory extends AnyThreadTurboModuleFactory {
     if (name === JoplinCryptoModule.NAME) {
       return new JoplinCryptoModule(this.ctx);
     }
+    if (name === JoplinI18nModule.NAME) {
+      return new JoplinI18nModule(this.ctx);
+    }
     return null;
   }
 
   public hasTurboModule(name: string): boolean {
-    return name === JoplinSQLiteModule.NAME || name === JoplinFileSystemModule.NAME || name === JoplinCryptoModule.NAME;
+    return name === JoplinSQLiteModule.NAME || name === JoplinFileSystemModule.NAME || name === JoplinCryptoModule.NAME || name === JoplinI18nModule.NAME;
   }
 }
 
